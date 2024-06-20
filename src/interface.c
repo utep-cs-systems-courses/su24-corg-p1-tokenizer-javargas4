@@ -3,6 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// compare two strings, returns 0 if equal
+int string_compare (const char *str1, const char *str2) {
+  while (*str1 && (*str1 == *str2)) {
+    str1++;
+    str2++;
+  }
+  return (unsigned char)(*str1) - (unsigned char)(*str2);
+}
+
+
 int main (void) {
   char user_input[256];
 
@@ -19,10 +29,15 @@ int main (void) {
 	  user_input[i] ='\0';
 	  break;
 	}
-	
-      }     
+      }
+      
+      // handle 'quit' command
+      if (string_compare(user_input, "quit") == 0) {
+	break;
+      }
     }    
   }
+  return 0;
 }
 
 
