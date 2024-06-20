@@ -12,6 +12,11 @@ int string_compare (const char *str1, const char *str2) {
   return (unsigned char)(*str1) - (unsigned char)(*str2);
 }
 
+// checks if the character is a digit
+int is_digit (char c) {
+  return c >= '0' && c <= '9';
+}
+
 
 int main (void) {
   char user_input[256];
@@ -34,6 +39,19 @@ int main (void) {
       // handle 'quit' command
       if (string_compare(user_input, "quit") == 0) {
 	break;
+	
+      // handle 'history' command
+      } else if (string_compare(user_input, "history") == 0) {
+	// do something
+
+      // handle '!x' recall command
+      } else if (user_input[0] == '!' && is_digit(user_input[1])) {
+	// do something
+
+      // handle user token string input
+      } else {
+	// echos user input
+        printf("%s\n", &user_input);
       }
     }    
   }
